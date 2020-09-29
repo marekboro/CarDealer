@@ -58,21 +58,24 @@ public class Dealership implements IBuy {
         }
     }
 
-    public boolean canAffordRepair(Vehicle vehicle) {
-        double originalPrice = vehicle.getPrice()/ ((double)vehicle.getCondition() /100);
-        int percentageToRepair = (100 - vehicle.getCondition());
-        return till >= originalPrice*(double)percentageToRepair/100;
-    }
-
     public void repairVehicle(Vehicle vehicle){
-        if(canAffordRepair(vehicle)){
-            double originalPrice = vehicle.getPrice()/ ((double)vehicle.getCondition() /100);
-            double repairPrice = ((100.0-(double)(vehicle.getCondition()))*originalPrice)/100;
-            vehicle.setCondition(100);
+        int damageToRepair = 100 - vehicle.getCondition();
+        double repairPrice = (vehicle.getOriginalPrice()*(damageToRepair))/100;
+        if (getTill()>=repairPrice){
+            vehicle.repairDamage(damageToRepair);
             double newTill = getTill() - repairPrice;
             setTill(newTill);
         }
 
+    }
+    public void repairVehicleByPercent(Vehicle vehicle, int percent){
+        double repairPrice = (vehicle.getOriginalPrice()*percent)/100;
+        if (getTill()>=repairPrice){
+            vehicle.repairDamage(percent);
+            double newTill = getTill() - repairPrice;
+            setTill(newTill);
+        }
 
     }
+
 }

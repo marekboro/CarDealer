@@ -24,6 +24,10 @@ public abstract class Vehicle {
 
     }
 
+    public double getOriginalPrice(){
+        return this.price;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -60,5 +64,26 @@ public abstract class Vehicle {
 
     public void setCondition(int condition) {
         this.condition = condition;
+    }
+
+
+    public boolean canRepair(int percentage){
+        return this.condition+percentage <=100;
+    }
+
+    public boolean canTakeDamage(int damage){
+        return this.condition > damage && condition>0;
+    }
+
+    public void takeDamage(int percentage){
+        if(canTakeDamage(percentage)){
+            setCondition(getCondition()-percentage);
+        }
+
+    }
+    public void repairDamage(int percentage) {
+        if (canRepair(percentage)){
+            setCondition(getCondition()+percentage);
+        }
     }
 }

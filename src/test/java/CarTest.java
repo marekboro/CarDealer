@@ -31,10 +31,16 @@ public class CarTest {
     }
 
     @Test
-    public void hasPrice() {
+    public void hasPriceThatWillAdjustWithCondition() {
         assertEquals(2000.0, car.getPrice(), 0.01);
         assertEquals(5000.0, carE.getPrice(), 0.01);
         assertEquals(3000.0, carH.getPrice(), 0.01);
+        carH.repairDamage(30);
+        assertEquals(6000.0, carH.getPrice(), 0.01);
+        carH.takeDamage(20);
+        assertEquals(4000.0, carH.getPrice(), 0.01);
+
+
     }
 
     @Test
@@ -87,6 +93,7 @@ public class CarTest {
         assertTrue(carE.getBattery().getCapacity() > carH.getBattery().getCapacity());
         assertTrue(carH.getBattery().getCapacity() > car.getBattery().getCapacity());
     }
+
 
 
 }

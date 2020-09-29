@@ -63,6 +63,10 @@ public class DealershipTest {
         assertEquals(2000.0,dealership.getTill(),0.01);
         dealership.repairVehicle(carH);
         assertEquals(2000.0,dealership.getTill(),0.01);
+        dealership.repairVehicleByPercent(carH,20);
+        assertEquals(0.0,dealership.getTill(),0.01);
+        assertEquals(50,carH.getCondition());
+
 
     }
 
