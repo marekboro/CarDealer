@@ -1,10 +1,11 @@
 package people;
 
+import interfaces.IBuy;
 import vehicles.Vehicle;
 
 import java.util.ArrayList;
 
-public class Customer extends Person {
+public class Customer extends Person implements IBuy {
     private double money;
     private String dreams;
     private ArrayList<Vehicle> ownedVehicles;
@@ -15,7 +16,6 @@ public class Customer extends Person {
         this.dreams = dreams;
         this.ownedVehicles = new ArrayList<Vehicle>();
     }
-
 
     public double getMoney() {
         return money;

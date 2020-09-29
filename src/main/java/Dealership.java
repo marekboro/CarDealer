@@ -1,11 +1,11 @@
+import interfaces.IBuy;
 import people.Customer;
 import people.Dealer;
 import vehicles.Vehicle;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Dealership {
+public class Dealership implements IBuy {
     private String name;
     private ArrayList<Vehicle> vehicles;
     private ArrayList<Dealer> staff;
